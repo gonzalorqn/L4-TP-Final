@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "l4-tp-final": {
+      "hosting": {
+        "TP-Final": [
+          "l4-tp-final"
+        ]
+      }
+    }
+  }
+}

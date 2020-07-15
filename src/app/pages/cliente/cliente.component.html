@@ -1,0 +1,49 @@
+<img src="../../../assets/banner.png" class="center">
+<br>
+<br>
+<h2 style="text-align: center;"><u>Cliente</u></h2>
+<br>
+<h3 style="text-align: center;">Pedir turno:</h3>
+<p style="text-align: center;">(Horarios: Lunes a viernes de 8:00 a 19:00 y sábados de 8:00 a 14:00)</p>
+<div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4" style="margin-left: auto; margin-right: auto;">
+        <p-calendar [(ngModel)]="date" [locale]="es" dateFormat="dd/mm/yy" [minDate]="minDate" [maxDate]="maxDate" placeholder="Fecha" readonlyInput="true" disabledDays="[0]"></p-calendar>
+    </div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4" style="margin-left: auto; margin-right: auto;">
+        <p-calendar [(ngModel)]="time" [timeOnly]="true" placeholder="Hora" readonlyInput="true"></p-calendar>
+    </div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4" style="margin-left: auto; margin-right: auto;">
+        <p-dropdown [options]="especialistas" [(ngModel)]="espec" placeholder="Seleccionar especialista"></p-dropdown>
+    </div>
+</div>
+<h4 style="text-align: center;">Recordatorio: los turnos son cada 15 minutos</h4>
+<div style="text-align: center;">
+    <button pButton label="Pedir turno" icon="pi pi-calendar-plus" class="ui-menuitem ui-button-info" (click)="pedirTurno()"></button>
+</div>
+<br>
+<div style="text-align: center;">
+    <button pButton label="Ver mis turnos" icon="pi pi-arrow-right" class="ui-menuitem ui-button-success" routerLink="/turnos"></button>
+</div>
+<router-outlet></router-outlet>
+
+<p-dialog header="Error" [(visible)]="displayModal" [modal]="true" styleClass="mydialog" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <p>
+        {{this.message}}
+    </p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" class="ui-button-info" (click)="displayModal=false" label="OK"></button>
+</p-footer>
+</p-dialog>
+
+<p-dialog header="Éxito" [(visible)]="displayModal2" [modal]="true" styleClass="mydialog" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <p>
+        Su turno se procesó correctamente.
+    </p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" class="ui-button-info" (click)="reload()" label="OK"></button>
+</p-footer>
+</p-dialog>

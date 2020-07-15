@@ -1,0 +1,38 @@
+<img src="../../../assets/banner.png" class="center">
+<h2 style="text-align: center;"><u>Entrar</u></h2>
+<div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4" style="margin-left: auto; margin-right: auto;">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi pi-envelope" style="line-height: 1.25;"></i></span>
+            <input type="text" pInputText placeholder="Email" [(ngModel)]="email">     
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4" style="margin-left: auto; margin-right: auto;">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi pi-lock" style="line-height: 1.25;"></i></span>
+            <input type="password" feedback pPassword placeholder="Password" [(ngModel)]="password">
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div style="margin-left: auto; margin-right: auto;">
+        <br>
+        <button pButton label="Entrar" icon="pi pi-sign-in" class="ui-menuitem ui-button-success" (click)="login()"></button>
+    </div>
+</div>
+<br>
+<br>
+<div style="text-align: center;">
+    <h3>No tenés cuenta?</h3>
+    <button pButton label="Registrarse" routerLink="/registro" icon="pi pi-id-card" class="ui-menuitem ui-button-info"></button>
+</div>
+<p-dialog header="Error" [(visible)]="displayModal" [modal]="true" styleClass="mydialog" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <p>
+        {{this.message}}
+    </p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" class="ui-button-info" (click)="displayModal=false" label="OK"></button>
+    </p-footer>
+</p-dialog>

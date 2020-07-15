@@ -1,0 +1,60 @@
+<img src="../../../assets/banner.png" class="center">
+<h2 style="text-align: center;"><u>Registro</u></h2>
+<div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4" style="margin-left: auto; margin-right: auto;">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+            <input type="text" pInputText placeholder="Nombre" [(ngModel)]="nombre">     
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4" style="margin-left: auto; margin-right: auto;">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+            <input type="text" pInputText placeholder="Apellido" [(ngModel)]="apellido">     
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4" style="margin-left: auto; margin-right: auto;">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi pi-envelope" style="line-height: 1.25;"></i></span>
+            <input type="text" pInputText placeholder="Email" [(ngModel)]="email">     
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4" style="margin-left: auto; margin-right: auto;">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi pi-lock" style="line-height: 1.25;"></i></span>
+            <input type="password" feedback pPassword placeholder="Password" [(ngModel)]="password">
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <div class="ui-g-12 ui-md-4" style="margin-left: auto; margin-right: auto;">
+        <p-dropdown [options]="tiposUsuarios" [(ngModel)]="tipo" placeholder="Seleccionar tipo"></p-dropdown>
+    </div>
+    <div class="ui-g-12 ui-md-4"></div>
+    <br>
+    <div style="margin-left: auto; margin-right: auto;">
+        <br>
+        <button pButton label="Registrar" icon="pi pi-user-plus" class="ui-menuitem ui-button-success" (click)="signup()"></button>
+    </div>
+</div>
+<br>
+<div class="ui-g ui-fluid">
+    <div style="margin-left: auto; margin-right: auto;">
+        <button pButton label="Volver" routerLink="/administrador" icon="pi pi-arrow-left" class="ui-g-12 ui-md-4 ui-button-info"></button>
+    </div>
+</div>
+<p-dialog header="Error" [(visible)]="displayModal" [modal]="true" styleClass="mydialog" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <p>
+        {{this.message}}
+    </p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" class="ui-button-info" (click)="displayModal=false" label="OK"></button>
+</p-footer>
+</p-dialog>

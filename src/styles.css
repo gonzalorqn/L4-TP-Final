@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #3f3f3f;
+    color: #dedede;
+}
+
+body .pi {
+    font-size: 1em;
+}
+
+body .ui-rating a .ui-rating-icon {
+    font-size: 1em;
+}
+
+img{
+    height: 50%; 
+    width: 50%;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.center-card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+  }
+
+.center-card img{
+    height: 190px; 
+    width: auto; 
+    float: left;
+}
+
+.mydialog {
+    width: 25vw;
+}
+
+@media screen and (max-width: 40em) {
+    .mydialog {
+        width: 50vw;
+    }
+
+    img{
+        height: 90%; 
+        width: 90%;
+    }
+
+    .center-card img{
+        height: 100px; 
+        width: auto; 
+        float: left;
+    }
+}
+
+@media (max-width: 1024px) {
+    .filter-container {
+        text-align: left;
+    }
+}

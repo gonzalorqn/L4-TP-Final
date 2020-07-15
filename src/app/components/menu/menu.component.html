@@ -1,0 +1,6 @@
+<div class="ui-menubar" style="padding: 3px 3px 3px 3px;">
+    <button pButton label="Readme" routerLink="/readme" icon="pi pi-info" class="ui-menuitem ui-button-info" style="vertical-align: middle;"></button>
+    <button pButton [label]="label" [routerLink]="routerLink" [icon]="icon" [class]="class" style="float: right;" (click)="log()"></button>
+    <label class="ui-menuitem" style="float: right; padding-right: 10px; padding-top: 7px; font-size: 15px;">{{this.user | titlecase}}</label>
+</div>
+<br>

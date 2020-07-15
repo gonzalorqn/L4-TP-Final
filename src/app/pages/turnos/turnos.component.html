@@ -1,0 +1,80 @@
+<img src="../../../assets/banner.png" class="center">
+<br>
+<br>
+<h2 style="text-align: center;"><u>Cliente</u></h2>
+<br>
+<p-table #dt [value]="turnos" styleClass="ui-table" [rowHover]="true" [rows]="10" [loading]="loading" [paginator]="true">
+    <ng-template pTemplate="caption">
+        Mis turnos
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="cliente">Cliente <p-sortIcon field="cliente"></p-sortIcon></th>
+            <th pSortableColumn="espec">Especialista <p-sortIcon field="espec"></p-sortIcon></th>
+            <th pSortableColumn="fecha">Fecha <p-sortIcon field="fecha"></p-sortIcon></th>
+            <th>Opciones</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-turno>
+        <tr class="ui-selectable-row">
+            <td>
+                {{turno.cliente | titlecase}}
+            </td>
+            <td>
+                {{turno.especialista | titlecase}}
+            </td>
+            <td>
+                {{turno.fecha}} {{turno.hora}}
+            </td>
+            <td>
+                <button pButton type="button" class="ui-button-danger" icon="pi pi-times" (click)="confirmacion(turno)"></button>
+                <button pButton type="button" class="ui-button-info" icon="pi pi-info-circle" (click)="verResenia(turno)"></button>
+                <button pButton type="button" class="ui-button-warning" icon="pi pi-chart-bar" (click)="encuesta(turno)"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="4" style="text-align:left">No se encontraron turnos.</td>
+        </tr>
+    </ng-template>
+</p-table>
+<br>
+<div style="text-align: center;">
+    <button pButton label="Volver" icon="pi pi-arrow-left" class="ui-menuitem ui-button-success" routerLink="/cliente"></button>
+</div>
+
+<p-dialog header="Está seguro?" [closable]="false" [(visible)]="displayModal" [modal]="true" styleClass="mydialog" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <p>
+        Está seguro que desea cancelar el turno seleccionado?
+    </p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" class="ui-button-success" (click)="eliminar()" label="Sí"></button>
+        <button type="button" pButton icon="pi pi-check" class="ui-button-danger" (click)="displayModal=false" label="No"></button>
+</p-footer>
+</p-dialog>
+
+<p-dialog header="Encuesta de satisfacción" [(visible)]="displayModal2" [modal]="true" styleClass="mydialog" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <p>
+        - Cómo calificaría la clínica?
+        <p-rating [(ngModel)]="clin" [cancel]="false" [stars]="10"></p-rating>
+        <br>
+        - Cómo calificaría el especialista?
+        <p-rating [(ngModel)]="esp" [cancel]="false" [stars]="10"></p-rating>
+        <br>
+        - Comentario:
+        <textarea [(ngModel)]="com" rows="5" cols="30" pInputTextarea autoResize="autoResize"></textarea>
+    </p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" class="ui-button-success" (click)="cargarEncuesta()" label="Enviar"></button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Reseña del especialista" [(visible)]="displayModal3" [modal]="true" styleClass="mydialog" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <p>
+        {{this.message}}
+    </p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" class="ui-button-info" (click)="displayModal3=false" label="OK"></button>
+    </p-footer>
+</p-dialog>
