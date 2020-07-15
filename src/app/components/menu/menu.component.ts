@@ -18,6 +18,7 @@ export class MenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem('token', null);
     try {
       const token = localStorage.getItem('token');
       const helper = new JwtHelperService();
