@@ -19,9 +19,16 @@ export class AuthLoginGuard implements CanActivate {
         const helper = new JwtHelperService();
         const payload = helper.decodeToken(token);
         
-        this.router.navigateByUrl("/");
+        if(payload.name !== undefined)
+        {
+          this.router.navigateByUrl("/");
 
-        return false;
+          return false;
+        }
+        else
+        {
+          return true;
+        }
       }
       catch (error) {
         return true;
